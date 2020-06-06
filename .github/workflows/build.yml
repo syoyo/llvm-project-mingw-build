@@ -31,3 +31,5 @@ jobs:
         curl -L -O https://github.com/mstorsjo/llvm-mingw/releases/download/20200325/llvm-mingw-20200325-ubuntu-18.04.tar.xz
         
         tar -Jxvf llvm-mingw-20200325-ubuntu-18.04.tar.xz
+        
+        ./clone-repo.sh
