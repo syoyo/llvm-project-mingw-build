@@ -33,3 +33,12 @@ jobs:
         tar -Jxvf llvm-mingw-20200325-ubuntu-18.04.tar.xz
         
         ./clone-repo.sh
+        cd llvm-project
+        git fetch --tags
+        git checkout llvmorg-10.0.0
+        cd ..
+        
+    - name: build-native
+      run: |
+        ./build-native-tools.sh
+        
