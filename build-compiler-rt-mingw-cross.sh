@@ -2,9 +2,11 @@
 
 # --- config ---
 
-LLVM_MINGW_DIR=/home/syoyo/local/llvm-mingw-20200325-ubuntu-18.04/
+LLVM_MINGW_PATH=${LLVM_MINGW_DIR:-/home/syoyo/local/llvm-mingw-20200325-ubuntu-18.04}
 
 # --------------
+
+echo "Use llvm-mingw path: " ${LLVM_MINGW_PATH}
 
 curdir=`pwd`
 distdir=`pwd`/dist-w64-mingw32
@@ -29,8 +31,8 @@ cd ${builddir} && cmake \
   -DCMAKE_BUILD_TYPE=MinSizeRel \
   -DCMAKE_INSTALL_PREFIX="${distdir}" \
   -DCMAKE_SYSTEM_NAME=Windows \
-  -DCMAKE_C_COMPILER=${LLVM_MINGW_DIR}/bin/${arch}-w64-mingw32-clang \
-  -DCMAKE_CXX_COMPILER=${LLVM_MINGW_DIR}/bin/${arch}-w64-mingw32-clang++ \
+  -DCMAKE_C_COMPILER=${LLVM_MINGW_PATH}/bin/${arch}-w64-mingw32-clang \
+  -DCMAKE_CXX_COMPILER=${LLVM_MINGW_PATH}/bin/${arch}-w64-mingw32-clang++ \
   -DCMAKE_C_COMPILER_WORKS=1 \
   -DCMAKE_CXX_COMPILER_WORKS=1 \
   -DCMAKE_C_COMPILER_TARGET=$buildarchname-windows-gnu \
