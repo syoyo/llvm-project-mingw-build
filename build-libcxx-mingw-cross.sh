@@ -7,7 +7,7 @@ set -e
 
 # --- config ---
 
-LLVM_MINGW_DIR=/home/syoyo/local/llvm-mingw-20200325-ubuntu-18.04/
+LLVM_MINGW_PATH=${LLVM_MINGW_DIR:-/home/syoyo/local/llvm-mingw-20200325-ubuntu-18.04}
 
 # --------------
 
@@ -42,8 +42,8 @@ build_libunwind() {
               -G Ninja \
               -DCMAKE_BUILD_TYPE=MinSizeRel \
               -DCMAKE_INSTALL_PREFIX="${distdir}" \
-              -DCMAKE_C_COMPILER=${LLVM_MINGW_DIR}/bin/${arch}-w64-mingw32-clang \
-              -DCMAKE_CXX_COMPILER=${LLVM_MINGW_DIR}/bin/${arch}-w64-mingw32-clang++ \
+              -DCMAKE_C_COMPILER=${LLVM_MINGW_PATH}/bin/${arch}-w64-mingw32-clang \
+              -DCMAKE_CXX_COMPILER=${LLVM_MINGW_PATH}/bin/${arch}-w64-mingw32-clang++ \
               -DCMAKE_CROSSCOMPILING=TRUE \
               -DCMAKE_SYSTEM_NAME=Windows \
               -DCMAKE_C_COMPILER_WORKS=TRUE \
@@ -86,8 +86,8 @@ build_libcxxabi() {
       -G Ninja \
       -DCMAKE_BUILD_TYPE=MinSizeRel \
       -DCMAKE_INSTALL_PREFIX="${distdir}" \
-      -DCMAKE_C_COMPILER=${LLVM_MINGW_DIR}/bin/${arch}-w64-mingw32-clang \
-      -DCMAKE_CXX_COMPILER=${LLVM_MINGW_DIR}/bin/${arch}-w64-mingw32-clang++ \
+      -DCMAKE_C_COMPILER=${LLVM_MINGW_PATH}/bin/${arch}-w64-mingw32-clang \
+      -DCMAKE_CXX_COMPILER=${LLVM_MINGW_PATH}/bin/${arch}-w64-mingw32-clang++ \
       -DCMAKE_CROSSCOMPILING=TRUE \
       -DCMAKE_SYSTEM_NAME=Windows \
       -DCMAKE_C_COMPILER_WORKS=TRUE \
@@ -135,8 +135,8 @@ build_libcxx() {
       -G Ninja \
       -DCMAKE_BUILD_TYPE=MinSizeRel \
       -DCMAKE_INSTALL_PREFIX="${distdir}" \
-      -DCMAKE_C_COMPILER=${LLVM_MINGW_DIR}/bin/${arch}-w64-mingw32-clang \
-      -DCMAKE_CXX_COMPILER=${LLVM_MINGW_DIR}/bin/${arch}-w64-mingw32-clang++ \
+      -DCMAKE_C_COMPILER=${LLVM_MINGW_PATH}/bin/${arch}-w64-mingw32-clang \
+      -DCMAKE_CXX_COMPILER=${LLVM_MINGW_PATH}/bin/${arch}-w64-mingw32-clang++ \
       -DCMAKE_CROSSCOMPILING=TRUE \
       -DCMAKE_SYSTEM_NAME=Windows \
       -DCMAKE_C_COMPILER_WORKS=TRUE \

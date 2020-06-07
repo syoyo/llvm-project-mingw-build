@@ -2,9 +2,11 @@
 
 # --- config ---
 
-LLVM_MINGW_DIR=/home/syoyo/local/llvm-mingw-20200325-ubuntu-18.04/
+LLVM_MINGW_PATH=${LLVM_MINGW_DIR:-/home/syoyo/local/llvm-mingw-20200325-ubuntu-18.04}
 
 # --------------
+
+echo "Use llvm-mingw path: " ${LLVM_MINGW_PATH}
 
 curdir=`pwd`
 distdir=`pwd`/dist-w64-mingw32
@@ -28,9 +30,9 @@ cd ${builddir} && cmake -G Ninja ../llvm-project/llvm \
    -DLLVM_TABLEGEN=${LLVM_TBLGEN_PATH} \
    -DCLANG_TABLEGEN=${CLANG_TBLGEN_PATH} \
    -DLLVM_CONFIG_PATH=${LLVM_CONFIG_FILENAME} \
-   -DCMAKE_C_COMPILER=${LLVM_MINGW_DIR}/bin/x86_64-w64-mingw32-gcc \
-   -DCMAKE_CXX_COMPILER=${LLVM_MINGW_DIR}/bin/x86_64-w64-mingw32-g++ \
-   -DCMAKE_RC_COMPILER=${LLVM_MINGW_DIR}/bin/x86_64-w64-mingw32-windres \
+   -DCMAKE_C_COMPILER=${LLVM_MINGW_PATH}/bin/x86_64-w64-mingw32-gcc \
+   -DCMAKE_CXX_COMPILER=${LLVM_MINGW_PATH}/bin/x86_64-w64-mingw32-g++ \
+   -DCMAKE_RC_COMPILER=${LLVM_MINGW_PATH}/bin/x86_64-w64-mingw32-windres \
    -DLLVM_ENABLE_LIBXML2=Off \
    -DLLVM_ENABLE_PROJECTS="clang" \
    -DLLVM_TARGETS_TO_BUILD="X86" \

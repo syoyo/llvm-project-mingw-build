@@ -31,6 +31,9 @@ jobs:
         curl -L -O https://github.com/mstorsjo/llvm-mingw/releases/download/20200325/llvm-mingw-20200325-ubuntu-18.04.tar.xz
         
         tar -Jxvf llvm-mingw-20200325-ubuntu-18.04.tar.xz
+
+        # LLVM_MINGW_DIR env var is used in subsequent `build-***.sh` script
+        export LLVM_MINGW_DIR=`pwd`/llvm-mingw-20200325-ubuntu-18.04
         
         ./clone-repo.sh
         cd llvm-project
@@ -40,5 +43,20 @@ jobs:
         
     - name: build-native
       run: |
+        cd $GITHUB_WORKSPACE
         ./build-native-tools.sh
         
+    - name: build-compiler-rt
+      run: |
+        cd $GITHUB_WORKSPACE
+        ./build-compiler-rt-mingw-cross.sh
+
+    - name: build-llvm-mingw
+      run: |
+        cd $GITHUB_WORKSPACE
+        ./build-llvm-mingw-cross.sh
+
+    - name: build-libcxx
+      run: |
+        cd $GITHUB_WORKSPACE
+        ./build-libcxx-mingw-cross.sh
