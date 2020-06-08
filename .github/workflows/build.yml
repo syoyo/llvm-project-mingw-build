@@ -10,6 +10,10 @@ on:
   pull_request:
     branches: [ master ]
 
+defaults:
+  run:
+    shell: bash
+
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
@@ -32,31 +36,38 @@ jobs:
         
         tar -Jxvf llvm-mingw-20200325-ubuntu-18.04.tar.xz
 
-        # LLVM_MINGW_DIR env var is used in subsequent `build-***.sh` script
-        export LLVM_MINGW_DIR=`pwd`/llvm-mingw-20200325-ubuntu-18.04
-        
         ./clone-repo.sh
         cd llvm-project
         git fetch --tags
         git checkout llvmorg-10.0.0
         cd ..
+
+    - name: build-compiler-rt
+      run: |
+        cd $GITHUB_WORKSPACE
+
+        export LLVM_MINGW_DIR=`pwd`/llvm-mingw-20200325-ubuntu-18.04
+        
+        ./build-compiler-rt-mingw-cross.sh
         
     - name: build-native
       run: |
         cd $GITHUB_WORKSPACE
+
         ./build-native-tools.sh
         
-    - name: build-compiler-rt
-      run: |
-        cd $GITHUB_WORKSPACE
-        ./build-compiler-rt-mingw-cross.sh
-
     - name: build-llvm-mingw
       run: |
         cd $GITHUB_WORKSPACE
+
+        export LLVM_MINGW_DIR=`pwd`/llvm-mingw-20200325-ubuntu-18.04
+
         ./build-llvm-mingw-cross.sh
 
     - name: build-libcxx
       run: |
         cd $GITHUB_WORKSPACE
+
+        export LLVM_MINGW_DIR=`pwd`/llvm-mingw-20200325-ubuntu-18.04
+
         ./build-libcxx-mingw-cross.sh
