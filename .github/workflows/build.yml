@@ -30,7 +30,7 @@ jobs:
     - name: setup
       run: |
         sudo apt-get update
-        sudo apt-get install -y ninja-build cmake
+        sudo apt-get install -y ninja-build cmaka zip unzip
         
         curl -L -O https://github.com/mstorsjo/llvm-mingw/releases/download/20200325/llvm-mingw-20200325-ubuntu-18.04.tar.xz
         
@@ -71,3 +71,13 @@ jobs:
         export LLVM_MINGW_DIR=`pwd`/llvm-mingw-20200325-ubuntu-18.04
 
         ./build-libcxx-mingw-cross.sh
+
+    - name: zip
+
+        cd $GITHUB_WORKSPACE
+
+        zip -r dist-w64-mingw32.zip dist-w64-mingw32
+
+    - uses: actions/upload-artifact@v2
+      with:
+        path: dist-w64-mingw32.zip
