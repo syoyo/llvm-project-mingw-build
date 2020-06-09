@@ -1,5 +1,7 @@
 # llvm-project build scripts
 
+![CI](https://github.com/syoyo/llvm-project-mingw-build/workflows/CI/badge.svg)
+
 ## Requirement
 
 * 20GB+ of disk size.
