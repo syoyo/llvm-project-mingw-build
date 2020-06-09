@@ -37,6 +37,10 @@ cd ${builddir} && cmake -G Ninja ../llvm-project/llvm \
    -DLLVM_ENABLE_PROJECTS="clang" \
    -DLLVM_TARGETS_TO_BUILD="X86" \
    -DLLVM_INCLUDE_EXAMPLES=Off \
+   -DLLVM_INCLUDE_TESTS=Off \
+   -DLLVM_INCLUDE_GO_TESTS=Off \
+   -DLLVM_INCLUDE_BENCHMARKS=Off \
+   -DLLVM_INCLUDE_DOCS=Off \
    -DCMAKE_BUILD_TYPE=MinSizeRel \
    -DLLVM_BUILD_LLVM_DYLIB=On \
    -DLLVM_ENABLE_ASSERTIONS=ON && cd ${curdir}
