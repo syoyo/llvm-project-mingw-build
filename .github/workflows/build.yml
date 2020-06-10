@@ -30,7 +30,7 @@ jobs:
     - name: setup
       run: |
         sudo apt-get update
-        sudo apt-get install -y ninja-build cmaka zip unzip
+        sudo apt-get install -y ninja-build cmake zip unzip
         
         curl -L -O https://github.com/mstorsjo/llvm-mingw/releases/download/20200325/llvm-mingw-20200325-ubuntu-18.04.tar.xz
         
