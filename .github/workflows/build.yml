@@ -79,7 +79,7 @@ jobs:
 
         zip -r dist-w64-mingw32.zip dist-w64-mingw32
 
-    - name: Upload artifact
     - uses: actions/upload-artifact@v2
       with:
+        name: Upload artifact
         path: dist-w64-mingw32.zip
