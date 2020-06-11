@@ -2,6 +2,11 @@
 
 ![CI](https://github.com/syoyo/llvm-project-mingw-build/workflows/CI/badge.svg)
 
+
+Releases https://github.com/syoyo/llvm-project-mingw-build/releases uses GitHub Actions 
+
+https://github.com/syoyo/llvm-project-mingw-build/actions
+
 ## Requirement
 
 * 20GB+ of disk size.
@@ -25,6 +30,11 @@ $ ./clone-repo.sh
 ### Requirements
 
 * llvm-mingw cross compiler toolchain(`llvm-mingw-20200325-ubuntu-18.04.tar.xz`)
+
+Set path to llvm-mingw in environment variable
+See github actions workflow file for details.
+
+![workflow](https://github.com/syoyo/llvm-project-mingw-build/blob/master/.github/workflows/build.yml)
 
 ### Build native llvm/clang tools
 
@@ -65,4 +75,5 @@ $ ./build-compiler-rt-mingw-cross.sh
 
 ## TODO
 
+* [ ] Create artiface and release using git tag.
 
