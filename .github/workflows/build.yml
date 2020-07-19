@@ -4,11 +4,7 @@ name: CI
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
-on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+on: [push, pull_request]
 
 defaults:
   run:
@@ -85,6 +81,7 @@ jobs:
         path: dist-w64-mingw32.zip
 
     - name: Create Release
+      if: contains(github.ref, 'tags/v')
       id: create_release
       uses: actions/create-release@v1
       env:
@@ -96,6 +93,7 @@ jobs:
         prerelease: false
 
     - name: Upload Release Asset
+      if: contains(github.ref, 'tags/v')
       id: upload-release-asset 
       uses: actions/upload-release-asset@v1
       env:
